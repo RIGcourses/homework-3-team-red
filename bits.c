@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * <Gabriel Silva gsilva2@luc.edu Tristan Mckean tmckean@luc.edu>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -174,7 +174,7 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-  return 2;
+  return (~x & ~y);
 }
 /* 
  * bitXor - x^y using only ~ and & 
@@ -184,7 +184,7 @@ int bitNor(int x, int y) {
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return 2;
+  return ~(~(x & ~y) & ~(~x & y));;
 }
 /* 
  * TMax - return maximum two's complement integer 
@@ -193,7 +193,7 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
-  return 2;
+  return ~(1 << 31);
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -203,7 +203,7 @@ int tmax(void) {
  *   Rating: 2
  */
 int isNotEqual(int x, int y) {
-  return 2;
+  return !!(x ^ y);
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
@@ -213,7 +213,7 @@ int isNotEqual(int x, int y) {
  *   Rating: 2
  */
 int copyLSB(int x) {
-  return 2;
+  return ((x & 1) << 31) >> 31;
 }
 /* 
  * rotateRight - Rotate x to the right by n
@@ -224,7 +224,11 @@ int copyLSB(int x) {
  *   Rating: 3 
  */
 int rotateRight(int x, int n) {
-  return 2;
+  int left_shift = (((~n + 1) + 32) & 31);
+  int mask = ~(((1 << 31) >> n) << 1);
+  int right_part = (x >> n) & mask;
+  int left_part = x << left_shift;
+  return left_part | right_part;
 }
 /* 
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
@@ -234,5 +238,5 @@ int rotateRight(int x, int n) {
  *   Rating: 3
  */
 int isNonNegative(int x) {
-  return 2;
+  return !(x >> 31);
 }
