@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Gabriel Silva gsilva2@luc.edu Tristian Mckean tmckean@luc.edu>
+ * <Gabriel Silva gsilva2@luc.edu Tristan Mckean tmckean@luc.edu>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
